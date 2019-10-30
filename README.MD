@@ -6,7 +6,7 @@ Simple Elastic Bulk importer. This importer leverage the ability of Microsoft SQ
 - Elasticsearch 
 - Microsoft SQL Server 2016
 
-## Usage 
+## Usage app
 ```
 # run dep ensure 
 dep ensure
