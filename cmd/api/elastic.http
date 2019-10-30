@@ -1,0 +1,137 @@
+PUT http://localhost:9200/date_dimension HTTP/1.1
+Content-Type: application/json  
+
+{
+    "Date": "2000-01-01",
+    "Day": 1,
+    "DaySuffix": "st",
+    "Weekday": 6,
+    "WeekDayName": "Saturday",
+    "IsWeekend": false,
+    "IsHoliday": false,
+    "DOWInMonth": 1,
+    "DayOfYear": 1,
+    "WeekOfMonth": 1,
+    "WeekOfYear": 1,
+    "ISOWeekOfYear": 52,
+    "Month": 1,
+    "MonthName": "January",
+    "Quarter": 1,
+    "QuarterName": "First",
+    "Year": 2000,
+    "MMYYYY": "012000",
+    "MonthYear": "Jan2000",
+    "FirstDayOfMonth": "2000-01-01",
+    "LastDayOfMonth": "2000-01-31",
+    "FirstDayOfQuarter": "2000-01-01",
+    "LastDayOfQuarter": "2000-03-31",
+    "FirstDayOfYear": "2000-01-01",
+    "LastDayOfYear": "2000-12-31",
+    "FirstDayOfNextMonth": "2000-02-01",
+    "FirstDayOfNextYear": "2001-01-01"
+}
+
+######
+POST http://localhost:8888/bulk HTTP/1.1
+
+#######
+GET http://localhost:9200/_mapping HTTP/1.1
+
+#####
+POST http://localhost:9200/_bulk HTTP/1.1
+Content-Type: application/json
+
+{ "create": {"_index": "date_dimension","_id": 946684800}}
+{    "Date": "2000-01-01", "Day": 1, "DaySuffix": "st", "Weekday": 6, "WeekDayName": "Saturday", "IsWeekend": false, "IsHoliday": false, "DOWInMonth": 1, "DayOfYear": 1, "WeekOfMonth": 1, "WeekOfYear": 1, "ISOWeekOfYear": 52, "Month": 1, "MonthName": "January", "Quarter": 1, "QuarterName": "First", "Year": 2000, "MMYYYY": "012000", "MonthYear": "Jan2000", "FirstDayOfMonth": "2000-01-01", "LastDayOfMonth": "2000-01-31", "FirstDayOfQuarter": "2000-01-01", "LastDayOfQuarter": "2000-03-31", "FirstDayOfYear": "2000-01-01", "LastDayOfYear": "2000-12-31", "FirstDayOfNextMonth": "2000-02-01", "FirstDayOfNextYear": "2001-01-01"} 
+
+########
+PUT http://localhost:9200/date_dimension HTTP/1.1
+Content-Type: application/json
+
+{
+	"mappings": {
+		"properties": {
+			"Date": {
+				"type": "text"
+			},
+			"Day": {
+				"type": "long"
+			},
+			"DaySuffix": {
+				"type": "text"
+			},
+			"Weekday": {
+				"type": "long"
+			},
+			"WeekDayName": {
+				"type": "text"
+			},
+			"IsWeekend": {
+				"type": "boolean"
+			},
+			"IsHoliday": {
+				"type": "boolean"
+			},
+			"DOWInMonth": {
+				"type": "long"
+			},
+			"DayOfYear": {
+				"type": "long"
+			},
+			"WeekOfMonth": {
+				"type": "long"
+			},
+			"WeekOfYear": {
+				"type": "long"
+			},
+			"ISOWeekOfYear": {
+				"type": "long"
+			},
+			"Month": {
+				"type": "long"
+			},
+			"MonthName": {
+				"type": "text"
+			},
+			"Quarter": {
+				"type": "long"
+			},
+			"QuarterName": {
+				"type": "text"
+			},
+			"Year": {
+				"type": "long"
+			},
+			"MMYYYY": {
+				"type": "text"
+			},
+			"MonthYear": {
+				"type": "text"
+			},
+			"FirstDayOfMonth": {
+				"type": "text"
+			},
+			"LastDayOfMonth": {
+				"type": "text"
+			},
+			"FirstDayOfQuarter": {
+				"type": "text"
+			},
+			"LastDayOfQuarter": {
+				"type": "text"
+			},
+			"FirstDayOfYear": {
+				"type": "text"
+			},
+			"LastDayOfYear": {
+				"type": "text"
+			},
+			"FirstDayOfNextMonth": {
+				"type": "text"
+			},
+			"FirstDayOfNextYear": {
+				"type": "text"
+			}
+		}
+	}
+}
