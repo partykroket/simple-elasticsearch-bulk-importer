@@ -2,15 +2,21 @@
 
 Simple Elastic Bulk importer. This importer leverage the ability of Microsoft SQL Server to convert output to json files. The workflow is as follows, a stored procedure is generating json's and the Go API is retrieving these jsons and making sure the the order of these jsons are correctly set.
 
-## Installation 
+## Requirements
+- Elasticsearch 
+- Microsoft SQL Server 2016
+
+## Usage 
 ```
-# run dep ensure
+# run dep ensure 
 dep ensure
 
 # Go to root and run or build an executable
 go run ./cmd/api/main.go
 
 ```
+
+
 
 
 Below an example query that generates the correct JSON 
