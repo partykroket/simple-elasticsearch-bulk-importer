@@ -36,11 +36,7 @@ func (h *HTTP) bulk(c echo.Context) error {
 
 	// Set defaults
 	r.DBHost = h.DefaultDbhost
-	r.DBUser = "sa"
-	r.DBPass = "SQLServerTest@1991"
-	r.DBName = "TESTDB"
 	r.ElasticHost = h.DefaultElasticHost
-	r.ElasticIndex = "date_dimension"
 	r.ElasticBulkType = h.DefaultElasticBulkType
 	r.Fetch = h.DefaultFetch
 	r.Offset = h.DefaultOffset
