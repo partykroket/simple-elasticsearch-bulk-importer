@@ -6,7 +6,7 @@ GO
 
 /* 
 ==========================================================================================================
-Author		Sten Raadschelders
+Author		    Sten 
 Project        Elasticsearch Data Inserter
 Description 	Preparation, staging of data.
 
