@@ -35,20 +35,13 @@ func (u *Importer) Bulk(c echo.Context, r *esimporter.BulkRequest) ([]byte, int,
 			return nil, 0, err
 		}
 
-		// test += r.BulkInstructions + []byte(fmt.Sprintf("\n")) + r.Source + []byte(fmt.Sprintf("\n"))
-
+		// Get the bulk request in the correct order
 		payload = append(payload, r.BulkInstructions...)
 		payload = append(payload, []byte(fmt.Sprintf("\n"))...)
 		payload = append(payload, r.Source...)
 		payload = append(payload, []byte(fmt.Sprintf("\n"))...)
 
-		// esReq = append(esReq, r)
 	}
-
-	// bulkBytes, err := json.Marshal(esReq)
-	// if err != nil {
-	// 	return nil, 0, err
-	// }
 
 	statusCode, err := elastic.PostBulk(payload, r)
 	if err != nil {
