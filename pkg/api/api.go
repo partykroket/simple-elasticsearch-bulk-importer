@@ -1,34 +1,3 @@
-// Copyright 2017 Emir Ribic. All rights reserved.
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file.
-
-// GORSK - Go(lang) restful starter kit
-//
-// API Docs for GORSK v1
-//
-// 	 Terms Of Service:  N/A
-//     Schemes: http
-//     Version: 2.0.0
-//     License: MIT http://opensource.org/licenses/MIT
-//     Contact: Emir Ribic <ribice@gmail.com> https://ribice.ba
-//     Host: localhost:8080
-//
-//     Consumes:
-//     - application/json
-//
-//     Produces:
-//     - application/json
-//
-//     Security:
-//     - bearer: []
-//
-//     SecurityDefinitions:
-//     bearer:
-//          type: apiKey
-//          name: Authorization
-//          in: header
-//
-// swagger:meta
 package api
 
 import (
@@ -44,15 +13,17 @@ import (
 
 // Start starts the API service
 func Start(cfg *config.Configuration) error {
-
+	// New log instance
 	log := zlog.New()
 
+	// Init echo server
 	e := server.New()
-
 	v1 := e.Group("/v1")
 
-	it.NewHTTP(il.New(importer.Initialize(), log), v1)
+	// Init bulk call
+	it.NewHTTP(il.New(importer.Initialize(), log), v1, cfg.App.DefaultDbhost, cfg.App.DefaultElasticBulkType, cfg.App.DefaultElasticHost, cfg.App.DefaultFetch, cfg.App.DefaultOffset)
 
+	// Start server
 	server.Start(e, &server.Config{
 		Port:                cfg.Server.Port,
 		ReadTimeoutSeconds:  cfg.Server.ReadTimeout,

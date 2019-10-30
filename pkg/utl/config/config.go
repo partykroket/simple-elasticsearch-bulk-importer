@@ -23,16 +23,7 @@ func Load(path string) (*Configuration, error) {
 // Configuration holds data necessery for configuring application
 type Configuration struct {
 	Server *Server      `yaml:"server,omitempty"`
-	DB     *Database    `yaml:"database,omitempty"`
-	JWT    *JWT         `yaml:"jwt,omitempty"`
 	App    *Application `yaml:"application,omitempty"`
-}
-
-// Database holds data necessery for database configuration
-type Database struct {
-	PSN        string `yaml:"psn,omitempty"`
-	LogQueries bool   `yaml:"log_queries,omitempty"`
-	Timeout    int    `yaml:"timeout_seconds,omitempty"`
 }
 
 // Server holds data necessery for server configuration
@@ -43,17 +34,13 @@ type Server struct {
 	WriteTimeout int    `yaml:"write_timeout_seconds,omitempty"`
 }
 
-// JWT holds data necessery for JWT configuration
-type JWT struct {
-	Secret           string `yaml:"secret,omitempty"`
-	Duration         int    `yaml:"duration_minutes,omitempty"`
-	RefreshDuration  int    `yaml:"refresh_duration_minutes,omitempty"`
-	MaxRefresh       int    `yaml:"max_refresh_minutes,omitempty"`
-	SigningAlgorithm string `yaml:"signing_algorithm,omitempty"`
-}
-
 // Application holds application configuration details
 type Application struct {
-	MinPasswordStr int    `yaml:"min_password_strength,omitempty"`
-	SwaggerUIPath  string `yaml:"swagger_ui_path,omitempty"`
+	DefaultDbhost          string `yaml:"default_db_host"`
+	DefaultElasticBulkType string `yaml:"default_elastic_bulk_type"`
+	DefaultElasticHost     string `yaml:"default_elastic_host"`
+	DefaultFetch           int    `yaml:"default_fetch"`
+	DefaultOffset          int    `yaml:"default_offset"`
+	MinPasswordStr         int    `yaml:"min_password_strength,omitempty"`
+	SwaggerUIPath          string `yaml:"swagger_ui_path,omitempty"`
 }
